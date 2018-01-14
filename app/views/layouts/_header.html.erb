@@ -13,6 +13,7 @@
         <% if logged_in? %>
           <li><%= link_to "New Categorty", new_category_path %></li>
         <% end %>
+        <li><%= link_to "Contact", contact_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if !logged_in? %>
