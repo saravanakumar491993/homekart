@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :product_id %>
+    <%=  form.label :product_id %>
     <%= form.text_field :product_id, id: :product_product_id %>
   </div>
 
@@ -41,7 +41,12 @@
     <%= form.number_field :discount, id: :product_discount %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+  <% if product %>
+    <%= select_tag 'categories[]', options_from_collection_for_select(@categories, :id, :category_name, product.categories.map {|category| category.id}), multiple: true, style: 'width:420px;overflow:auto' %>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>

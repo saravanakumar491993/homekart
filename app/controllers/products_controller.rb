@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit ]
 
   # GET /products
   # GET /products.json
@@ -27,14 +28,24 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+      begin
+        @product.transaction do
+          @product.save!
+          params["categories"].each do |cat_id|
+            mapper = ProductCategoryMapper.new(:product_id=>@product.id, :category_id=>cat_id)
+            mapper.save!
+          end
+          format.html { redirect_to @product, notice: 'Product was successfully created.' }
+          format.json { render :show, status: :created, location: @product }
+        end   
+      rescue
+          set_categories
+          format.html { render :new }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /products/1
@@ -65,6 +76,10 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
+    end
+
+    def set_categories
+      @categories = Category.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
