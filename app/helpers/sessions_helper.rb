@@ -26,9 +26,8 @@ module SessionsHelper
 
 
   def admin_user?
-     current_user.role == User.role[:admin]
+     User.roles[@current_user.role] < User.roles[:sales_person]
   end
-
 
   # Confirms a logged-in user.
   def logged_in_user

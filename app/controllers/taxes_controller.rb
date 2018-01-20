@@ -1,4 +1,6 @@
 class TaxesController < ApplicationController
+  before_action :logged_in_user
+  before_action :super_admin_user
   before_action :set_tax, only: [:show, :edit, :update, :destroy]
 
   # GET /taxes

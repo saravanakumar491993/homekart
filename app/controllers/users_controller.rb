@@ -82,12 +82,6 @@ class UsersController < ApplicationController
       end
     end
 
-    def admin_user
-      unless User.roles[@current_user.role] < User.roles[:sales_person]
-        redirect_to e_401_path
-      end
-    end
-
     def set_roles
       @roles = User.roles.select { |name, value| value > User.roles[@current_user.role] }
     end

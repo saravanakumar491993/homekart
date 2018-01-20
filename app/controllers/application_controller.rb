@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_no_cache
   include SessionsHelper
+  include UsersHelper
 
   private
 	  def set_no_cache
