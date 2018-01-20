@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109105007) do
+ActiveRecord::Schema.define(version: 20180117024922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20180109105007) do
   create_table "categories", force: :cascade do |t|
     t.integer "category_id"
     t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "product_id"
+    t.integer "available_count"
+    t.integer "threshold_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +39,14 @@ ActiveRecord::Schema.define(version: 20180109105007) do
     t.index ["product_id"], name: "index_product_category_mappers_on_product_id"
   end
 
+  create_table "product_tax_details", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "tax_id"
+    t.decimal "tax_percent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "product_id"
     t.string "product_name"
@@ -38,6 +54,22 @@ ActiveRecord::Schema.define(version: 20180109105007) do
     t.decimal "srp", precision: 5, scale: 2
     t.integer "seller_id"
     t.integer "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taxes", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

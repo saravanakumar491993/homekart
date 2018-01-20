@@ -1,0 +1,30 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*Variables*/
+$light-gray: #777;
+
+/*header*/
+#header	{
+	text-align: center;
+	vertical-align: center;
+	color: white;
+}
+
+/*footer*/
+footer {
+  padding: 15px;
+  border-top: 1px solid #eaeaea;
+  color: $light-gray;
+ 
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
