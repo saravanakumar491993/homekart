@@ -25,6 +25,11 @@ module SessionsHelper
   end
 
 
+  def admin_user?
+     current_user.role == User.role[:admin]
+  end
+
+
   # Confirms a logged-in user.
   def logged_in_user
     unless logged_in?
