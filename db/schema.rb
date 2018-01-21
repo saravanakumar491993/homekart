@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20180121051858) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "order_id"
     t.bigint "user_id"
     t.integer "payment_mode"
     t.bigint "customer_id"

@@ -1,2 +1,27 @@
-<h1>Sales#new</h1>
-<p>Find me in app/views/sales/new.html.erb</p>
+<h1>Billing</h1>
+
+<div class="row seperator">
+  <div class="col-md-6 vcenter">
+      <strong>Bill no : </strong>
+      <span><%= @order.id %></span>
+  </div><!--
+    --><div class="col-md-6 vcenter">
+      <strong>Processed by : </strong>
+      <span><%= @order.user.name %></span>
+  </div>
+</div>
+
+<div class="row seperator">
+  <div class="col-md-3 vcenter" >
+      <strong>Customer no : </strong>
+      <span><%= @order.customer.id %></span>
+  </div><!--
+--><div class="col-md-9  vcenter">
+      <strong>Name : </strong>
+      <input id="customers"><%= @order.customer.name %></input>
+  </div>
+</div>
+
+<%= render 'form', order: @order %>
+
+<br/>

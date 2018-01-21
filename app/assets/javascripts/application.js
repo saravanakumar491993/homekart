@@ -13,5 +13,39 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+
+
+
+$( function() {
+
+   $("#customers").autocomplete({
+	    source: function(request, response){
+	    	$.ajax({
+		     	url: "/customers",
+		     	dataType: "json",
+		        success: function(result){
+		    				response(result);
+		    			 }
+	    	});
+	    },
+	    focus: function( event, ui ) {
+			        $( "#customers" ).val( ui.item.name );
+			        return false;
+			   },
+	    select: function( event, ui ) {
+			        $( "#customers" ).val( ui.item.name );
+ 
+			        return false;
+			    }   
+    })
+   .autocomplete("instance")._renderItem = function( ul, item ) {
+       return $( "<li>" )
+        .append( "<div>" + item.name + "</div>" )
+        .appendTo( ul );
+        };
+ });
