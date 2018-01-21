@@ -4,7 +4,7 @@ class CreateOrderProductTaxDetails < ActiveRecord::Migration[5.1]
       t.bigint :order_id
       t.bigint :product_id
       t.bigint :tax_id
-
+      t.decimal :tax_percent
       t.timestamps
     end
   end

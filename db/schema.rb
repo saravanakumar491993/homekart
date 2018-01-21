@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20180121051858) do
     t.bigint "order_id"
     t.bigint "product_id"
     t.bigint "tax_id"
+    t.decimal "tax_percent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
