@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :order_details
   resources :customers
   match '/404', to:'errors#not_found', :via => :all, as: :e_404
   match '/500', to:'errors#internal_server_error', :via => :all, as: :e_500
