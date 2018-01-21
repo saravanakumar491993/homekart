@@ -16,7 +16,9 @@
           <% if can? :read, User %>
             <li><%= link_to "Users", users_path %></li>
           <% end %>
+          <% if can? :manage, Tax %>
             <li><%= link_to "Tax", taxes_path %></li>
+          <% end %>
         <% end %>
         <li><%= link_to "Contact", contact_path %></li>
       </ul>
