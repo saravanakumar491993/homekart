@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user
-  before_action :admin_user
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_roles,only: [:new, :edit]
+  authorize_resource
+  before_action :set_roles, only: [:new, :edit]
 
   # GET /users
   # GET /users.json
@@ -74,12 +72,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
-    end
-
-    def authorize_user
-      unless User.roles[@current_user.role] <= User.roles[@user.role] 
-        redirect_to e_401_path
-      end
     end
 
     def set_roles

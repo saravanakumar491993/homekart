@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   match '/404', to:'errors#not_found', :via => :all, as: :e_404
   match '/500', to:'errors#internal_server_error', :via => :all, as: :e_500
   match '/401', to:'errors#unauthorized', :via => :all, as: :e_401
