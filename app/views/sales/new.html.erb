@@ -12,13 +12,17 @@
 </div>
 
 <div class="row seperator">
-  <div class="col-md-3 vcenter" >
+  <div class="col-md-4 vcenter" >
       <strong>Customer no : </strong>
       <span><%= @order.customer.id %></span>
   </div><!--
---><div class="col-md-9  vcenter">
+--><div class="col-md-4 vcenter">
       <strong>Name : </strong>
-      <input id="customers"><%= @order.customer.name %></input>
+      <input id="customersSearchByNameInput"><%= @order.customer.name %></input>
+  </div><!--
+--><div class="col-md-4  vcenter">
+      <strong>Phone : </strong>
+      <input id="customersSearchByPhoneInput"><%= @order.customer.name %></input>
   </div>
 </div>
 

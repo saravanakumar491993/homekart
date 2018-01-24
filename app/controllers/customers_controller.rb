@@ -4,7 +4,14 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    case params["by"]
+        when "name"
+          @customers = Customer.where("LOWER(name) LIKE LOWER(?) ", "%#{params[:term]}%")
+        when "phone"
+          @customers = CustomerPhoneNumber.where("phone_number LIKE ? ", "%#{params[:term]}%").map(&:customer)
+        else
+          @customers = Customer.all
+      end 
   end
 
   # GET /customers/1
