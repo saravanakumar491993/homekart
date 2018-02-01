@@ -1,47 +1,31 @@
-<%= form_with(model: order_detail, local: true) do |form| %>
-  <% if order_detail.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order_detail.errors.count, "error") %> prohibited this order_detail from being saved:</h2>
+<div class="row seperator">
+  <%= form_with(model: order_detail, local: true) do |form| %>
 
-      <ul>
-      <% order_detail.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <%= form.hidden_field :order_id %>
+
+    <div class="col-md-1">
+      <%= @local_order_detail_id %>
     </div>
+
+    <div class="col-md-2">
+      <%= form.text_field :product_id, id: :order_detail_product_id %>
+    </div>
+
+    <div class="col-md-2">
+      <%= form.number_field :quantity, id: :order_detail_quantity %>
+    </div>
+
+    <div class="col-md-2">
+      <%= form.text_field :amount, id: :order_detail_amount %>
+    </div>
+
+    <div class="col-md-2">
+      <%= form.text_field :mrp, id: :order_detail_mrp %>
+    </div>
+
+    <div class="col-md-2">
+      <%= form.text_field :discount, id: :order_detail_discount %>
+    </div>
+
   <% end %>
-
-  <div class="field">
-    <%= form.label :order_id %>
-    <%= form.text_field :order_id, id: :order_detail_order_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :product_id %>
-    <%= form.text_field :product_id, id: :order_detail_product_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, id: :order_detail_quantity %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount, id: :order_detail_amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mrp %>
-    <%= form.text_field :mrp, id: :order_detail_mrp %>
-  </div>
-
-  <div class="field">
-    <%= form.label :discount %>
-    <%= form.text_field :discount, id: :order_detail_discount %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

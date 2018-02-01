@@ -1,7 +1,11 @@
 
 
 $(document).on('turbolinks:load', function(evt){
-     $("#customersSearchByNameInput").autocomplete({
+	
+	/*
+	Provides customers suggestion on search by name
+	*/
+    $("#customersSearchByNameInput").autocomplete({
 	    source: function(request, response){
 	    	request["by"] = "name";
 	    	$.ajax({
@@ -14,11 +18,15 @@ $(document).on('turbolinks:load', function(evt){
 	    	});
 	    },
 	    focus: function( event, ui ) {
-			        this.val( ui.item.name );
+			        $("#customerId").html( ui.item.id );
+			        $("#customersSearchByNameInput").val( ui.item.name );
+			        $("#customersSearchByPhoneInput").val( ui.item.phone_numbers[0] );
 			        return false;
 			   },
 	    select: function( event, ui ) {
-			        this.val( ui.item.name );
+			        $("#customerId").html( ui.item.id );
+			        $("#customersSearchByNameInput").val( ui.item.name );
+			        $("#customersSearchByPhoneInput").val( ui.item.phone_numbers[0] );
 			        return false;
 			    }   
     })
@@ -28,8 +36,10 @@ $(document).on('turbolinks:load', function(evt){
         .appendTo( ul );
 		};
 
-
-		$("#customersSearchByPhoneInput").autocomplete({
+	/*
+	Provides customers suggestion on search by phone number
+	*/
+	$("#customersSearchByPhoneInput").autocomplete({
 	    source: function(request, response){
 	    	request["by"] = "phone";
 	    	$.ajax({
@@ -42,11 +52,15 @@ $(document).on('turbolinks:load', function(evt){
 	    	});
 	    },
 	    focus: function( event, ui ) {
-			        this.val( ui.item.name );
+			        $("#customerId").html( ui.item.id );
+			        $("#customersSearchByNameInput").val( ui.item.name );
+			        $("#customersSearchByPhoneInput").val( ui.item.phone_numbers[0] );
 			        return false;
 			   },
 	    select: function( event, ui ) {
-			        this.val( ui.item.name );
+			        $("#customerId").html( ui.item.id );
+			        $("#customersSearchByNameInput").val( ui.item.name );
+			        $("#customersSearchByPhoneInput").val( ui.item.phone_numbers[0] );
 			        return false;
 			    }   
     })
@@ -59,4 +73,5 @@ $(document).on('turbolinks:load', function(evt){
 	}
 
 
+	
 );

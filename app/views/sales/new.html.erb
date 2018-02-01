@@ -14,18 +14,32 @@
 <div class="row seperator">
   <div class="col-md-4 vcenter" >
       <strong>Customer no : </strong>
-      <span><%= @order.customer.id %></span>
+      <span id="customerId"><%= @order.customer.id %></span>
   </div><!--
 --><div class="col-md-4 vcenter">
       <strong>Name : </strong>
       <input id="customersSearchByNameInput"><%= @order.customer.name %></input>
-  </div><!--
+  </div><!--  
 --><div class="col-md-4  vcenter">
       <strong>Phone : </strong>
       <input id="customersSearchByPhoneInput"><%= @order.customer.name %></input>
   </div>
 </div>
 
-<%= render 'form', order: @order %>
+<div class="row headerText" style="margin-top: 50px" >
+  <div class="col-md-1">#</div>
+  <div class="col-md-2">Product id</div>
+  <div class="col-md-2">Description</div>
+  <div class="col-md-2">Rate</div>
+  <div class="col-md-2">Quantity</div>
+  <div class="col-md-2">Amount</div>
+</div>
+
+<% 
+  @order_detail = OrderDetail.new :order_id=>@order.id  
+  @local_order_detail_id = 1;
+%>
+
+<%= render 'order_details/form', order_detail: @order_detail %>
 
 <br/>
