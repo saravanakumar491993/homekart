@@ -1,5 +1,7 @@
 $(document).on 'turbolinks:load', ->
 
+	return unless page.controller() == 'sales' && page.action() == 'new'
+
 	$(".customerSearch").map ->
 		obj = $(this)
 		searchBy = obj.attr("by")

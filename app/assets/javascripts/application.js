@@ -26,7 +26,6 @@ Page = (function() {
     this.controller = bind(this.controller, this);
   }
   Page.prototype.controller = function() {
-  	alert($('body').attr('controller'));
     return $('body').attr('controller');
   };
   Page.prototype.action = function() {
