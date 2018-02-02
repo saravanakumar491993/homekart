@@ -19,6 +19,19 @@
 
 
 
-
-
-
+var Page, bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+Page = (function() {
+  function Page() {
+    this.action = bind(this.action, this);
+    this.controller = bind(this.controller, this);
+  }
+  Page.prototype.controller = function() {
+  	alert($('body').attr('controller'));
+    return $('body').attr('controller');
+  };
+  Page.prototype.action = function() {
+    return $('body').attr('action');
+  };
+  return Page;
+})();
+this.page = new Page;

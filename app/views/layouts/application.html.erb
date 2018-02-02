@@ -6,7 +6,7 @@
      <%= render 'layouts/rails_default' %>
   </head>
 
-  <body>
+  <body controller=<%= controller_name %> action=<%= action_name %>>
   	<%= render 'layouts/header' %>
  	<div class="container" style="margin-top:40px">
  	  <% flash.each do |message_type, message| %>

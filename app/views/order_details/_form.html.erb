@@ -1,31 +1,28 @@
-<div class="row seperator">
-  <%= form_with(model: order_detail, local: true) do |form| %>
+    <%= form_with(model: order_detail, local: true) do |form| %>
+      <%= form.hidden_field :order_id, id: :order_detail_order_id %>
 
-    <%= form.hidden_field :order_id %>
+      <td id="order_detail_index">
+      </td>
 
-    <div class="col-md-1">
-      <%= @local_order_detail_id %>
-    </div>
+      <td >
+        <%= form.text_field :product_id, id: :order_detail_product_id %>
+      </td>
 
-    <div class="col-md-2">
-      <%= form.text_field :product_id, id: :order_detail_product_id %>
-    </div>
+      <td >
+        <%= form.number_field :quantity, id: :order_detail_quantity %>
+      </td>
 
-    <div class="col-md-2">
-      <%= form.number_field :quantity, id: :order_detail_quantity %>
-    </div>
+      <td >
+        <%= form.text_field :amount, id: :order_detail_amount %>
+      </td>
 
-    <div class="col-md-2">
-      <%= form.text_field :amount, id: :order_detail_amount %>
-    </div>
+      <td>
+        <%= form.text_field :mrp, id: :order_detail_mrp %>
+      </td>
 
-    <div class="col-md-2">
-      <%= form.text_field :mrp, id: :order_detail_mrp %>
-    </div>
+      <td >
+        <%= form.text_field :discount, id: :order_detail_discount %>
+      </td>
 
-    <div class="col-md-2">
-      <%= form.text_field :discount, id: :order_detail_discount %>
-    </div>
+    <% end %>
 
-  <% end %>
-</div>
