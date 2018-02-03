@@ -28,7 +28,6 @@
 
 <div id="order_detail_table" class="seperator table">
   <div class="tr font-weight-bold">
-    <span class="td">#</span>
     <span class="td">Product id</span>
     <span class="td">Product Name</span>
     <span class="td">Quantity</span>
@@ -36,7 +35,20 @@
     <span class="td">Discount</span>
     <span class="td">Amount</span>
   </div>
-</table>
+</div>
+
+<div id="total_amount_div" class="row hidden">
+  <div class="col-md-12 vcenter text-right font-weight-bold">
+    <span>Total : </spam>
+    <span id="total_amount"></span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 vcenter text-center">
+    <button>Bill</button>
+  </div>
+</div>
 
 <%= render 'order_details/form', order_detail: OrderDetail.new %>
 

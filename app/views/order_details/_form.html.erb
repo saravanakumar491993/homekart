@@ -3,8 +3,6 @@
 
       <%= form.hidden_field :order_id, id: :order_detail_order_id %>
 
-      <span id="order_detail_index" class="td"></span>
-
       <span class="td">
         <%= form.text_field :product_id, id: :order_detail_product_id %>
       </span>
@@ -28,6 +26,8 @@
       <span class="td">
         <%= form.text_field :amount, id: :order_detail_amount %>
       </span>
+
+      <button id="order_detail_close" type="button" class="td hidden">X</button>
 
     <% end %>
 </div>
