@@ -35,6 +35,18 @@ footer {
     float: none;
 }
 
-.headerText {
+.font-weight-bold {
   font-weight: bold;
+}
+
+.table{
+  display: table;
+}
+
+.tr{
+  display: table-row;
+}
+
+.td{
+  display: table-cell;
 }

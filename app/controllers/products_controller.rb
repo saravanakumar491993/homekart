@@ -6,7 +6,12 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    case params["by"]
+        when "name"
+          @products = Product.where("LOWER(product_name) LIKE LOWER(?) ", "%#{params[:term]}%").limit(5)
+        else
+          @products = Product.all
+      end 
   end
 
   # GET /products/1

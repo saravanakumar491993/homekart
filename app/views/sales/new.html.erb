@@ -26,21 +26,19 @@
   </div>
 </div>
 
-<table id="order_detail_table" class="seperator">
-  <tr class="headerText">
-    <td>#</td>
-    <td>Product id</div>
-    <td>Description</td>
-    <td>Rate</td>
-    <td>Quantity</td>
-    <td>Amount</td>
-  </tr>
-<tr id="order_detail_div" style="visibility: collapse;">
-    <%= render 'order_details/form', order_detail: OrderDetail.new %>
-</tr>
-
+<div id="order_detail_table" class="seperator table">
+  <div class="tr font-weight-bold">
+    <span class="td">#</span>
+    <span class="td">Product id</span>
+    <span class="td">Product Name</span>
+    <span class="td">Quantity</span>
+    <span class="td">Mrp</span>
+    <span class="td">Discount</span>
+    <span class="td">Amount</span>
+  </div>
 </table>
 
+<%= render 'order_details/form', order_detail: OrderDetail.new %>
 
 
 <br/>

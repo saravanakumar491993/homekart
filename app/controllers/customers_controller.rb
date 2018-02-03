@@ -6,9 +6,9 @@ class CustomersController < ApplicationController
   def index
     case params["by"]
         when "name"
-          @customers = Customer.where("LOWER(name) LIKE LOWER(?) ", "%#{params[:term]}%")
+          @customers = Customer.where("LOWER(name) LIKE LOWER(?) ", "%#{params[:term]}%").limit(5)
         when "phone"
-          @customers = CustomerPhoneNumber.where("phone_number LIKE ? ", "%#{params[:term]}%").map(&:customer)
+          @customers = CustomerPhoneNumber.where("phone_number LIKE ? ", "%#{params[:term]}%").limit(5).map(&:customer)
         else
           @customers = Customer.all
       end 
